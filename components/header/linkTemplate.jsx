@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { chakra, List, ListItem } from "@chakra-ui/react";
+import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 
 const LinkTemplate = ({ title, data, closeNav }) => {
@@ -24,6 +25,7 @@ const LinkTemplate = ({ title, data, closeNav }) => {
           _hover={{ background: "tailwindCyan.800" }}
           _focus={{ outline: "none" }}
         >
+          {isOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}
           {title}
         </chakra.button>
 
