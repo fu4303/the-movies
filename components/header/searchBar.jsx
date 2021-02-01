@@ -1,9 +1,9 @@
 import { Input } from "@chakra-ui/react";
 
-const SearchBar = ({ isWidthFull }) => {
+const SearchBar = () => {
   return (
     <>
-      <Input placeholder="Search..." w={isWidthFull ? "full" : "25%"} />
+      <Input placeholder="Search..." w={{ base: "full", lg: "25%" }} />
     </>
   );
 };
