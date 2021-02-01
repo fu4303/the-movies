@@ -21,7 +21,7 @@ const MediaCards = (props) => (
           rounded="lg"
           transitionDuration="250ms"
           my="5"
-          maxW={{ base: "20rem", sm: "21rem" }}
+          maxW={{ base: "20rem", sm: "21rem", md: "none" }}
           mx="auto"
           _hover={{ boxShadow: "xl" }}
           key={media.id}
