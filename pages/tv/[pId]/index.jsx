@@ -1,12 +1,14 @@
-import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 const Container = dynamic(() =>
   import("../../../components/shared/cardContainer")
 );
 const TVShowCard = dynamic(() =>
-  import("../../../components/mediaComponents/mediaCards")
+  import("../../../components/mediaComponents/mediaCards").then(
+    (mod) => mod.MediaCards
+  )
 );
 const LoadMoreBtn = dynamic(() =>
   import("../../../components/shared/loadMoreBtn")
@@ -26,7 +28,7 @@ const Page = ({ pId, index }) => {
   return (
     <>
       {index < data.total_pages && (
-        <TVShowCard data={data.results} pId={pId} mediaType="tv" isTvShow />
+        <TVShowCard data={data.results} pId={pId} mediaType="tv" />
       )}
     </>
   );

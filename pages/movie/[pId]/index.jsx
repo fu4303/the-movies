@@ -6,7 +6,9 @@ const Container = dynamic(() =>
   import("../../../components/shared/cardContainer")
 );
 const MovieCard = dynamic(() =>
-  import("../../../components/mediaComponents/mediaCards")
+  import("../../../components/mediaComponents/mediaCards").then(
+    (mod) => mod.MediaCards
+  )
 );
 const LoadMoreBtn = dynamic(() =>
   import("../../../components/shared/loadMoreBtn")
@@ -26,7 +28,7 @@ const Page = ({ pId, index }) => {
   return (
     <>
       {index < data.total_pages && (
-        <MovieCard data={data.results} mediaType="movie" pId={pId} />
+        <MovieCard data={data.results} mediaType="movie" pId={pId} isMovie />
       )}
     </>
   );
