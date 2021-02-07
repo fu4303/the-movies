@@ -1,12 +1,14 @@
-import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 const Container = dynamic(() =>
   import("../../../components/shared/cardContainer")
 );
 const PersonCard = dynamic(() =>
-  import("../../../components/mediaComponents/peopleCards")
+  import("../../../components/mediaComponents/mediaCards").then(
+    (mod) => mod.PeopleCards
+  )
 );
 const LoadMoreBtn = dynamic(() =>
   import("../../../components/shared/loadMoreBtn")
