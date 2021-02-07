@@ -4,10 +4,9 @@ import Container from "../shared/cardContainer";
 import SEO from "../shared/seo";
 
 const CreditsPageHeader = (props) => {
-  const { data, isLoading, isError } = useMediaDetails(
-    props.mediaId,
-    props.mediaType
-  );
+  const { mediaId, mediaType, isMovie, children } = props;
+
+  const { data, isLoading, isError } = useMediaDetails(mediaId, mediaType);
 
   if (isLoading) return <div>loading...</div>;
   if (isError) return <div>failed to load</div>;
@@ -15,13 +14,13 @@ const CreditsPageHeader = (props) => {
   return (
     <>
       <SEO
-        title={`${props.isMovie ? data.title : data.name} (Cast & Crew)`}
+        title={`${isMovie ? data.title : data.name} (Cast & Crew)`}
         description={data.overview}
       />
       <Container
-        title={`${pageTitle(`${props.isMovie ? data.title : data.name} Cast`)}`}
+        title={`${pageTitle(`${isMovie ? data.title : data.name} Cast`)}`}
       >
-        {props.children}
+        {children}
       </Container>
     </>
   );

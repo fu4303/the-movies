@@ -1,23 +1,25 @@
-import { Button, Collapse, ListItem, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import { Button, Collapse, ListItem, Text } from "@chakra-ui/react";
 
 const MediaDesc = (props) => {
   const [show, setShow] = useState(false);
 
   const handleToggle = () => setShow(!show);
 
+  const { title, description } = props;
+
   return (
     <>
       <ListItem>
         <Text as="span" fontSize="lg" fontWeight={{ base: "500", lg: "600" }}>
-          {props.title}:{" "}
+          {title}:{" "}
         </Text>
-        {props.description ? (
+        {description ? (
           <>
-            {props.description.length >= 900 ? (
+            {description.length >= 900 ? (
               <>
                 <Collapse startingHeight={165} in={show}>
-                  {props.description}
+                  {description}
                 </Collapse>
                 <Button
                   size="sm"
@@ -30,7 +32,7 @@ const MediaDesc = (props) => {
                 </Button>
               </>
             ) : (
-              props.description
+              description
             )}
           </>
         ) : (

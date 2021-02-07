@@ -1,3 +1,4 @@
+import { Box, Heading } from "@chakra-ui/react";
 import useSWR from "swr";
 import NextLink from "next/link";
 import NextImage from "next/image";
@@ -10,13 +11,14 @@ import {
   fetcher,
   MAX_WIDTH,
 } from "../../config";
-import { Box, Heading } from "@chakra-ui/react";
 
 import styles from "./styles/recommendations.module.css";
 
 const Recommendations = (props) => {
+  const { mediaType, mediaId, isMovie } = props;
+
   const { data, error } = useSWR(
-    `${API_URL}${props.mediaType}/${props.mediaId}/recommendations?api_key=${API_KEY}&language=en-US`,
+    `${API_URL}${mediaType}/${mediaId}/recommendations?api_key=${API_KEY}&language=en-US`,
     fetcher
   );
 
@@ -46,14 +48,14 @@ const Recommendations = (props) => {
                   _hover={{ boxShadow: "xl" }}
                   key={media.id}
                 >
-                  <NextLink href={`/${props.mediaType}/popular/${media.id}`}>
+                  <NextLink href={`/${mediaType}/popular/${media.id}`}>
                     <a>
                       {media.backdrop_path ? (
                         <Box display="flex">
                           <NextImage
                             src={`${IMAGE_BASE_URL}${MEDIUM_BACKDROP_SIZE}${media.backdrop_path}`}
-                            alt={props.isMovie ? media.title : media.name}
-                            title={props.isMovie ? media.title : media.name}
+                            alt={isMovie ? media.title : media.name}
+                            title={isMovie ? media.title : media.name}
                             height="216"
                             width="384"
                             priority
@@ -68,7 +70,7 @@ const Recommendations = (props) => {
                         >
                           <NextImage
                             src="/image.svg"
-                            title={props.isMovie ? media.title : media.name}
+                            title={isMovie ? media.title : media.name}
                             alt="image-icon ionicons ionicons-icon"
                             height="216"
                             width="384"

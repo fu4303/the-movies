@@ -8,10 +8,9 @@ import { Box, chakra, Heading } from "@chakra-ui/react";
 import styles from "./styles/actorsCard.module.css";
 
 const ActorsCards = (props) => {
-  const { data, isLoading, isError } = useCredits(
-    props.mediaId,
-    props.mediaType
-  );
+  const { mediaId, mediaType, title, pId } = props;
+
+  const { data, isLoading, isError } = useCredits(mediaId, mediaType);
 
   if (isLoading) return <div>loading...</div>;
   if (isError) return <div>failed to load</div>;
@@ -27,13 +26,11 @@ const ActorsCards = (props) => {
             py="1rem"
             fontSize={{ base: "1.5rem", lg: "1.75rem" }}
           >
-            {props.title}
+            {title}
           </Heading>
-          <NextLink
-            href={`/${props.mediaType}/${props.pId}/${props.mediaId}/credits`}
-          >
+          <NextLink href={`/${mediaType}/${pId}/${mediaId}/credits`}>
             <chakra.a
-              href={`/${props.mediaType}/${props.pId}/${props.mediaId}/credits`}
+              href={`/${mediaType}/${pId}/${mediaId}/credits`}
               fontWeight="300"
             >
               Full Cast &#38; Crew
