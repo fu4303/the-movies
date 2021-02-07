@@ -26,58 +26,70 @@ const InfoCardContainer = ({ children }) => (
   </>
 );
 
-export const MediaInfoCard = (props) => (
-  <>
-    <InfoCardContainer>
-      <Box display="flex" justifyContent="space-between">
-        <List>
-          <ListItem
-            fontSize={{ base: "2xl", lg: "3xl" }}
-            fontWeight="600"
-            pt="0.25rem"
-            pb="0.5rem"
-          >
-            <NextLink href={props.href}>
-              <a>{props.title}</a>
-            </NextLink>
-          </ListItem>
+export const MediaInfoCard = (props) => {
+  const {
+    href,
+    title,
+    genres,
+    releaseDate,
+    runtime,
+    tagline,
+    voteAverage,
+    overview,
+    spokenLanguages,
+  } = props;
 
-          {!props.isHomePage && (
-            <ListItem>
-              {props.genres &&
-                props.genres.map((genre) => genre.name).join(", ")}
+  return (
+    <>
+      <InfoCardContainer>
+        <Box display="flex" justifyContent="space-between">
+          <List>
+            <ListItem
+              fontSize={{ base: "2xl", lg: "3xl" }}
+              fontWeight="600"
+              pt="0.25rem"
+              pb="0.5rem"
+            >
+              <NextLink href={href}>
+                <a>{title}</a>
+              </NextLink>
             </ListItem>
-          )}
 
-          <ListItem display="inline-block">
-            {props.releaseDate && <Date datestring={props.releaseDate} />}
-          </ListItem>
+            {genres && (
+              <ListItem>
+                {genres.map((genre) => genre.name).join(", ")}
+              </ListItem>
+            )}
 
-          {!props.isHomePage && (
-            <>
+            {releaseDate && (
+              <ListItem display="inline-block">
+                <Date datestring={releaseDate} />
+              </ListItem>
+            )}
+
+            {runtime && (
               <ListItem display="inline-block">
                 {", "}
-                {props.runtime && convertMinutesToHours(props.runtime)}
+                {convertMinutesToHours(runtime)}
               </ListItem>
-            </>
-          )}
+            )}
 
-          {!props.isHomePage && (
-            <ListItem fontWeight="300" pt="0.5rem">
-              {props.tagline && <Text as="i">{props.tagline}</Text>}
-            </ListItem>
-          )}
-        </List>
-        <CircularProgressbar
-          value={props.voteAverage}
-          size={{ base: "12", lg: "13" }}
-          fontSize={{ base: "11px", lg: "12" }}
-        />
-      </Box>
-      <List py="0.5rem">
-        <MediaDesc title="Overview" description={props.overview} />
+            {tagline && (
+              <ListItem fontStyle="italic" fontWeight="300" pt="0.5rem">
+                {tagline}
+              </ListItem>
+            )}
+          </List>
 
-        {!props.isHomePage && (
+          <CircularProgressbar
+            value={voteAverage}
+            size={{ base: "12", lg: "13" }}
+            fontSize={{ base: "11px", lg: "12" }}
+          />
+        </Box>
+        <List py="0.5rem">
+          <MediaDesc title="Overview" description={overview} />
+
           <ListItem>
             <Text
               as="span"
@@ -86,89 +98,99 @@ export const MediaInfoCard = (props) => (
             >
               Spoken language:{" "}
             </Text>
-            {props.spokenLanguages
-              ? props.spokenLanguages
-                  .map((lang) => lang.english_name)
-                  .join(", ")
+            {spokenLanguages
+              ? spokenLanguages.map((lang) => lang.english_name).join(", ")
               : "-"}
           </ListItem>
-        )}
-      </List>
-    </InfoCardContainer>
-  </>
-);
-
-export const PersonInfoCard = (props) => (
-  <>
-    <InfoCardContainer>
-      <Box display="flex" justifyContent="space-between">
-        <List>
-          <ListItem
-            fontSize={{ base: "2xl", lg: "3xl" }}
-            fontWeight="600"
-            pt="0.25rem"
-            pb="0.5rem"
-          >
-            <NextLink href={props.href}>
-              <a>{props.name}</a>
-            </NextLink>
-          </ListItem>
-          <ListItem>
-            <Text
-              as="span"
-              fontSize="lg"
-              fontWeight={{ base: "500", lg: "600" }}
-            >
-              Birthday:{" "}
-            </Text>
-            {props.birthday ? (
-              <>
-                <Date datestring={props.birthday} />
-                {", "}
-                {`${calculateAge(props.birthday)} years old`}
-              </>
-            ) : (
-              "-"
-            )}
-          </ListItem>
-          <ListItem>
-            <Text
-              as="span"
-              fontSize="lg"
-              fontWeight={{ base: "500", lg: "600" }}
-            >
-              Place of Birth:{" "}
-            </Text>
-            {props.placeOfBirth ? props.placeOfBirth : "-"}
-          </ListItem>
-
-          <ListItem>
-            <Text
-              as="span"
-              fontSize="lg"
-              fontWeight={{ base: "500", lg: "600" }}
-            >
-              Known For:{" "}
-            </Text>
-            {props.knownFor ? props.knownFor : "-"}
-          </ListItem>
-
-          <ListItem>
-            <Text
-              as="span"
-              fontSize="lg"
-              fontWeight={{ base: "500", lg: "600" }}
-            >
-              Gender:{" "}
-            </Text>
-            {props.gender ? (props.gender == 1 ? "Female" : "Male") : "-"}
-          </ListItem>
         </List>
-      </Box>
+      </InfoCardContainer>
+    </>
+  );
+};
 
-      <List py="0.5rem">
-        <MediaDesc title="Biography" description={props.biography} />
-      </List>
-    </InfoCardContainer>
-  </>
-);
+export const PersonInfoCard = (props) => {
+  const {
+    href,
+    name,
+    birthday,
+    placeOfBirth,
+    knownFor,
+    gender,
+    biography,
+  } = props;
+
+  return (
+    <>
+      <InfoCardContainer>
+        <Box display="flex" justifyContent="space-between">
+          <List>
+            <ListItem
+              fontSize={{ base: "2xl", lg: "3xl" }}
+              fontWeight="600"
+              pt="0.25rem"
+              pb="0.5rem"
+            >
+              <NextLink href={href}>
+                <a>{name}</a>
+              </NextLink>
+            </ListItem>
+            <ListItem>
+              <Text
+                as="span"
+                fontSize="lg"
+                fontWeight={{ base: "500", lg: "600" }}
+              >
+                Birthday:{" "}
+              </Text>
+              {birthday ? (
+                <>
+                  <Date datestring={birthday} />
+                  {", "}
+                  {`${calculateAge(birthday)} years old`}
+                </>
+              ) : (
+                "-"
+              )}
+            </ListItem>
+            <ListItem>
+              <Text
+                as="span"
+                fontSize="lg"
+                fontWeight={{ base: "500", lg: "600" }}
+              >
+                Place of Birth:{" "}
+              </Text>
+              {placeOfBirth ? placeOfBirth : "-"}
+            </ListItem>
+
+            <ListItem>
+              <Text
+                as="span"
+                fontSize="lg"
+                fontWeight={{ base: "500", lg: "600" }}
+              >
+                Known For:{" "}
+              </Text>
+              {knownFor ? knownFor : "-"}
+            </ListItem>
+
+            <ListItem>
+              <Text
+                as="span"
+                fontSize="lg"
+                fontWeight={{ base: "500", lg: "600" }}
+              >
+                Gender:{" "}
+              </Text>
+              {gender ? (gender == 1 ? "Female" : "Male") : "-"}
+            </ListItem>
+          </List>
+        </Box>
+
+        <List py="0.5rem">
+          <MediaDesc title="Biography" description={biography} />
+        </List>
+      </InfoCardContainer>
+    </>
+  );
+};
