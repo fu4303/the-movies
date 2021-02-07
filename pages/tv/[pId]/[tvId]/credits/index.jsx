@@ -1,12 +1,16 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
-const TvCredits = dynamic(() =>
-  import("../../../../../components/tvPages/tvCredits")
+const CreditsPage = dynamic(() =>
+  import("../../../../../components/creditsPageComponents")
+);
+const PeopleCards = dynamic(() =>
+  import("../../../../../components/mediaComponents/mediaCards").then(
+    (mod) => mod.PeopleCards
+  )
 );
 
 import { useCredits } from "../../../../../components/hooks/swr";
-import CreditsPageHeader from "../../../../../components/creditsPageComponents";
 
 const Credits = () => {
   const router = useRouter();
@@ -19,9 +23,9 @@ const Credits = () => {
 
   return (
     <>
-      <CreditsPageHeader mediaId={tvId} mediaType="tv">
-        <TvCredits tvId={tvId} />
-      </CreditsPageHeader>
+      <CreditsPage mediaId={tvId} mediaType="tv">
+        <PeopleCards data={data.cast} pId={tvId} isCreditsPage />
+      </CreditsPage>
     </>
   );
 };
