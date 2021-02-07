@@ -1,11 +1,11 @@
+import { MediaHeroSection } from "../detailsPage/heroSection";
 import ActorsCards from "../detailsPage/actorsCards";
 import Trailer from "../detailsPage/trailer";
 import Recommendations from "../detailsPage/recommendations";
-import { MediaHeroSection } from "../detailsPage/heroSection";
 
 const TVShowDetails = (props) => (
   <>
-    <MediaHeroSection {...props} mediaType="tv" mediaId={props.tvShowId} />
+    <MediaHeroSection mediaType="tv" mediaId={props.tvShowId} {...props} />
     <ActorsCards
       mediaType="tv"
       title="Series Cast"

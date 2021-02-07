@@ -5,7 +5,7 @@ import Recommendations from "../detailsPage/recommendations";
 
 const MovieDetails = (props) => (
   <>
-    <MediaHeroSection {...props} mediaType="movie" mediaId={props.movieId} />
+    <MediaHeroSection mediaType="movie" mediaId={props.movieId} {...props} />
     <ActorsCards
       mediaType="movie"
       title="Top Billed Cast"
