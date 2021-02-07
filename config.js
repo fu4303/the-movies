@@ -1,10 +1,6 @@
 // Site Configuration
 export default {
   title: "The Movies",
-  author: {
-    name: "Imad Atyat-Alah",
-    summary: "A young software engineer!",
-  },
   description: "My awesome description!",
   social: {
     twitter: "who",
