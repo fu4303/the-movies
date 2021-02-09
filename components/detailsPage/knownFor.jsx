@@ -1,8 +1,9 @@
+import { Box } from "@chakra-ui/react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 
 import { IMAGE_BASE_URL, MAX_WIDTH, POSTER_SIZE } from "../../config";
-import { Box, Heading } from "@chakra-ui/react";
+import { SectionTitle } from "../helpers/sectionTitle";
 
 import styles from "./styles/knownFor.module.css";
 
@@ -14,14 +15,20 @@ const KnownFor = (props) => {
       {cast == "" ? (
         ""
       ) : (
-        <Box maxW={MAX_WIDTH} mx="auto" px={[4, 8, 12, 16]}>
-          <Heading
-            as="h1"
+        <Box
+          as="section"
+          id="known_for"
+          maxW={MAX_WIDTH}
+          mx="auto"
+          px={[4, 8, 12, 16]}
+        >
+          <SectionTitle
+            href={`/person/popular/${props.personId}#known_for`}
             pt="1rem"
-            fontSize={{ base: "1.5rem", lg: "1.75rem" }}
           >
             Known For
-          </Heading>
+          </SectionTitle>
+
           <Box className={styles.container}>
             {cast
               .sort((a, b) => b.popularity - a.popularity)

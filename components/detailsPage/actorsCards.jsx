@@ -1,9 +1,10 @@
+import { Box, chakra } from "@chakra-ui/react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 
 import { IMAGE_BASE_URL, PROFILE_SIZE, MAX_WIDTH } from "../../config";
 import { useCredits } from "../hooks/swr";
-import { Box, chakra, Heading } from "@chakra-ui/react";
+import { SectionTitle } from "../helpers/sectionTitle";
 
 import styles from "./styles/actorsCard.module.css";
 
@@ -20,14 +21,20 @@ const ActorsCards = (props) => {
       {data.cast == "" ? (
         ""
       ) : (
-        <Box as="section" maxW={MAX_WIDTH} mx="auto" px={[4, 8, 12, 16]}>
-          <Heading
-            as="h1"
-            py="1rem"
-            fontSize={{ base: "1.5rem", lg: "1.75rem" }}
+        <Box
+          as="section"
+          id="series_cast"
+          maxW={MAX_WIDTH}
+          mx="auto"
+          px={[4, 8, 12, 16]}
+        >
+          <SectionTitle
+            href={`/${mediaType}/${pId}/${mediaId}#series_cast`}
+            pt="1rem"
           >
             {title}
-          </Heading>
+          </SectionTitle>
+
           <NextLink href={`/${mediaType}/${pId}/${mediaId}/credits`}>
             <chakra.a
               href={`/${mediaType}/${pId}/${mediaId}/credits`}
@@ -36,6 +43,7 @@ const ActorsCards = (props) => {
               Full Cast &#38; Crew
             </chakra.a>
           </NextLink>
+
           <Box className={styles.container}>
             {data.cast.slice(0, 6).map((person) => {
               return (

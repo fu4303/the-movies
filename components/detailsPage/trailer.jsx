@@ -1,9 +1,10 @@
-import { AspectRatio, Box, Heading } from "@chakra-ui/react";
+import { AspectRatio, Box } from "@chakra-ui/react";
 import useSWR from "swr";
 
 import { API_URL, API_KEY, fetcher, MAX_WIDTH } from "../../config";
+import { SectionTitle } from "../helpers/sectionTitle";
 
-const Trailer = ({ mediaType, mediaId }) => {
+const Trailer = ({ mediaType, mediaId, pId }) => {
   const { data, error } = useSWR(
     `${API_URL}${mediaType}/${mediaId}/videos?api_key=${API_KEY}&language=en-US`,
     fetcher
@@ -19,14 +20,19 @@ const Trailer = ({ mediaType, mediaId }) => {
       {data.results == "" ? (
         ""
       ) : (
-        <Box maxW={MAX_WIDTH} mx="auto" px={[4, 8, 12, 16]}>
-          <Heading
-            as="h1"
+        <Box
+          as="section"
+          id="trailer"
+          maxW={MAX_WIDTH}
+          mx="auto"
+          px={[4, 8, 12, 16]}
+        >
+          <SectionTitle
+            href={`/${mediaType}/${pId}/${mediaId}#trailer`}
             py="1rem"
-            fontSize={{ base: "1.5rem", lg: "1.75rem" }}
           >
             Trailer
-          </Heading>
+          </SectionTitle>
 
           <AspectRatio ratio="2" m={{ xl: "2rem" }}>
             <iframe

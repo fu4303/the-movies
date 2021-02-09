@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import useSWR from "swr";
 import NextLink from "next/link";
 import NextImage from "next/image";
@@ -11,11 +11,12 @@ import {
   fetcher,
   MAX_WIDTH,
 } from "../../config";
+import { SectionTitle } from "../helpers/sectionTitle";
 
 import styles from "./styles/recommendations.module.css";
 
 const Recommendations = (props) => {
-  const { mediaType, mediaId, isMovie } = props;
+  const { mediaType, mediaId, pId, isMovie } = props;
 
   const { data, error } = useSWR(
     `${API_URL}${mediaType}/${mediaId}/recommendations?api_key=${API_KEY}&language=en-US`,
@@ -30,14 +31,20 @@ const Recommendations = (props) => {
       {data.results == "" ? (
         <Box display="flex"></Box>
       ) : (
-        <Box maxW={MAX_WIDTH} mx="auto" px={[4, 8, 12, 16]}>
-          <Heading
-            as="h1"
+        <Box
+          as="section"
+          id="recommendations"
+          maxW={MAX_WIDTH}
+          mx="auto"
+          px={[4, 8, 12, 16]}
+        >
+          <SectionTitle
+            href={`/${mediaType}/${pId}/${mediaId}#recommendations`}
             pt="1rem"
-            fontSize={{ base: "1.5rem", lg: "1.75rem" }}
           >
             Recommendations
-          </Heading>
+          </SectionTitle>
+
           <Box className={styles.container}>
             {data.results.slice(0, 4).map((media) => {
               return (

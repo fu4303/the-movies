@@ -1,5 +1,7 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+
 import { MAX_WIDTH } from "../../config";
+import { SectionTitle } from "../helpers/sectionTitle";
 
 import styles from "./styles/cardContainer.module.css";
 
@@ -12,15 +14,10 @@ const Container = ({ title, children }) => (
       maxW={MAX_WIDTH}
       mx="auto"
     >
-      <Heading
-        as="h1"
-        color="white"
-        fontSize={{ base: "1.25em", sm: "1.5rem", md: "1.85rem" }}
-        fontWeight="500"
-        pt="1rem"
-      >
+      <SectionTitle color="white" pt="1rem">
         {title}
-      </Heading>
+      </SectionTitle>
+
       <Box className={styles.container}>{children}</Box>
     </Box>
   </>
