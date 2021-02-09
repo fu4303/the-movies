@@ -11,7 +11,7 @@ const PersonDetails = (props) => {
   return (
     <>
       <PersonHeroSection data={data} {...props} />
-      <KnownFor data={data} />
+      <KnownFor data={data} personId={props.personId} />
     </>
   );
 };
