@@ -67,7 +67,7 @@ export const MediaHeroSection = (props) => {
 };
 
 export const PersonHeroSection = (props) => {
-  const { data, backBtnHref, profile, name, pId, personId } = props;
+  const { data, backBtnHref, profile, name, personId } = props;
 
   return (
     <>
@@ -115,7 +115,7 @@ export const PersonHeroSection = (props) => {
             </Box>
           )}
 
-          <PersonInfoCard href={`/person/${pId}/${personId}`} {...props} />
+          <PersonInfoCard href={`/person/popular/${personId}`} {...props} />
         </Container>
       </Backdrop>
     </>
