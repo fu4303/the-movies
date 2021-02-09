@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 const DetailsPage = dynamic(() =>
   import("../../../../components/personPages/personDetails")
@@ -11,7 +11,6 @@ import SEO from "../../../../components/shared/seo";
 
 const PersonId = () => {
   const router = useRouter();
-  const { pId } = router.query;
   const { personId } = router.query;
 
   const { data, isLoading, isError } = useMediaDetails(personId, "person");
@@ -24,9 +23,8 @@ const PersonId = () => {
       <SEO title={data.name} description={data.biography} />
       <Box color="white">
         <DetailsPage
-          pId={pId}
           personId={personId}
-          backBtnHref={`/person/${pId}`}
+          backBtnHref={`/person/popular`}
           profile={data.profile_path}
           name={data.name}
           birthday={data.birthday}
