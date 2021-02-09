@@ -35,23 +35,19 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    heading:
-      "Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
-    body:
-      "Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
+    heading: "Poppins, -apple-system",
+    body: "Poppins, -apple-system",
   },
 });
 
-const MyApp = ({ Component, pageProps }) => {
-  return (
-    <>
-      <ChakraProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ChakraProvider>
-    </>
-  );
-};
+const MyApp = ({ Component, pageProps }) => (
+  <>
+    <ChakraProvider theme={theme}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ChakraProvider>
+  </>
+);
 
 export default MyApp;
