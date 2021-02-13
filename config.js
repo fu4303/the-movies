@@ -9,8 +9,7 @@ export default {
 
 export const MAX_WIDTH = "1440px";
 
-// SWR fetcher function (https://swr.vercel.app/getting-started#quick-start)
-export const fetcher = (...args) => fetch(...args).then((res) => res.json());
+export const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export const API_URL = "https://api.themoviedb.org/3/";
 
