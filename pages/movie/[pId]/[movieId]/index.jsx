@@ -1,13 +1,9 @@
 import { useRouter } from "next/router";
 import { Box } from "@chakra-ui/react";
-import dynamic from "next/dynamic";
-
-const DetailsPage = dynamic(() =>
-  import("../../../../components/moviePages/movieDetails")
-);
 
 import { useMediaDetails } from "../../../../components/hooks/swr";
 import SEO from "../../../../components/shared/seo";
+import DetailsPage from "../../../../components/moviePages/movieDetails";
 
 const MovieId = () => {
   const router = useRouter();

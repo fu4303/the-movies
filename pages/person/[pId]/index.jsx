@@ -1,23 +1,13 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
 
-const Container = dynamic(() =>
-  import("../../../components/shared/cardContainer")
-);
-const PersonCard = dynamic(() =>
-  import("../../../components/mediaComponents/mediaCards").then(
-    (mod) => mod.PeopleCards
-  )
-);
-const LoadMoreBtn = dynamic(() =>
-  import("../../../components/shared/loadMoreBtn")
-);
-
+import { PeopleCards as PersonCard } from "../../../components/mediaComponents/mediaCards";
 import { useMedia } from "../../../components/hooks/swr";
 import { pageTitle } from "../../../components/helpers/pageTitle";
 import config from "../../../config";
 import SEO from "../../../components/shared/seo";
+import Container from "../../../components/shared/cardContainer";
+import LoadMoreBtn from "../../../components/shared/loadMoreBtn";
 
 const Page = ({ pId, index }) => {
   const { data, isLoading, isError } = useMedia(pId, "person", index);
