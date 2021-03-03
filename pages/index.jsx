@@ -26,7 +26,7 @@ const Home = ({ movies }) => {
         title={`${pageTitle("popular")} Movies`}
         description={config.description}
       />
-      <Container title={`${pageTitle("popualr")} Movies`}>
+      <Container title={`${pageTitle("popular")} Movies`}>
         <MovieCard
           data={data.results}
           mediaType="movie"
@@ -38,15 +38,14 @@ const Home = ({ movies }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const movies = await fetcher(
     `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`
   );
 
   return {
-    props: {
-      movies,
-    },
+    props: { movies },
+    revalidate: 1,
   };
 };
 
