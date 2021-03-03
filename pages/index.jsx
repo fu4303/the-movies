@@ -1,17 +1,11 @@
 import useSWR from "swr";
-import dynamic from "next/dynamic";
 
 import config, { API_KEY, API_URL, fetcher } from "../config";
 import { pageTitle } from "../components/helpers/pageTitle";
 import { getMovies } from "../lib/movies";
+import { MediaCards } from "../components/mediaComponents/mediaCards";
 import SEO from "../components/shared/seo";
-
-const MovieCard = dynamic(() =>
-  import("../components/mediaComponents/mediaCards").then(
-    (mod) => mod.MediaCards
-  )
-);
-const Container = dynamic(() => import("../components/shared/cardContainer"));
+import Container from "../components/shared/cardContainer";
 
 const Home = ({ movies }) => {
   const {
@@ -29,7 +23,7 @@ const Home = ({ movies }) => {
         description={config.description}
       />
       <Container title={`${pageTitle("popular")} Movies`}>
-        <MovieCard
+        <MediaCards
           data={data.results}
           mediaType="movie"
           pId="popular"
