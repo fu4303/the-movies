@@ -34,22 +34,20 @@ export const MediaCards = (props) => {
                 {media.poster_path ? (
                   <NextImage
                     src={`${IMAGE_BASE_URL}${POSTER_SIZE}${media.poster_path}`}
-                    alt={media.name}
-                    title={media.name}
                     height="513"
                     width="342"
-                    priority
+                    alt={media.name}
+                    title={media.name}
                     className={styles.mediaImage}
                   />
                 ) : (
                   <Box roundedTop="lg" bg="tailwindGray.400">
                     <NextImage
                       src="/image.svg"
-                      title={media.title}
-                      alt="image-icon ionicons ionicons-icon"
                       height="513"
                       width="342"
-                      priority
+                      alt="image-icon ionicons ionicons-icon"
+                      title={media.title}
                       className={styles.fallBackMediaImage}
                     />
                   </Box>
@@ -102,22 +100,20 @@ export const PeopleCards = (props) => {
                 {person.profile_path ? (
                   <NextImage
                     src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${person.profile_path}`}
-                    title={person.name}
-                    alt={person.name}
                     width="300"
                     height="449"
-                    priority
+                    alt={person.name}
+                    title={person.name}
                     className={styles.mediaImage}
                   />
                 ) : (
                   <Box roundedTop="lg" bgColor="tailwindGray.400">
                     <NextImage
                       src="/person-sharp.svg"
-                      title={person.name}
-                      alt="person-sharp-icon ionicons ionicons-icon"
                       width="300"
                       height="449"
-                      priority
+                      alt="person-sharp-icon ionicons ionicons-icon"
+                      title={person.name}
                       className={styles.fallBackMediaImage}
                     />
                   </Box>

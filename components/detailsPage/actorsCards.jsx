@@ -60,11 +60,10 @@ const ActorsCards = (props) => {
                         <Box display="flex">
                           <NextImage
                             src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${person.profile_path}`}
-                            alt={person.name}
-                            title={person.name}
                             width="300"
                             height="450"
-                            priority
+                            alt={person.name}
+                            title={person.name}
                             className={styles.mediaImage}
                           />
                         </Box>
@@ -76,11 +75,10 @@ const ActorsCards = (props) => {
                         >
                           <NextImage
                             src="/person-sharp.svg"
-                            title={person.name}
-                            alt="person-sharp-icon ionicons ionicons-icon"
                             width="300"
                             height="450"
-                            priority
+                            alt="person-sharp-icon ionicons ionicons-icon"
+                            title={person.name}
                             className={styles.fallBackMediaImage}
                           />
                         </Box>

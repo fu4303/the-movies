@@ -61,11 +61,10 @@ const Recommendations = (props) => {
                         <Box display="flex">
                           <NextImage
                             src={`${IMAGE_BASE_URL}${MEDIUM_BACKDROP_SIZE}${media.backdrop_path}`}
-                            alt={isMovie ? media.title : media.name}
-                            title={isMovie ? media.title : media.name}
                             height="216"
                             width="384"
-                            priority
+                            alt={isMovie ? media.title : media.name}
+                            title={isMovie ? media.title : media.name}
                             className={styles.mediaImage}
                           />
                         </Box>
@@ -77,11 +76,10 @@ const Recommendations = (props) => {
                         >
                           <NextImage
                             src="/image.svg"
-                            title={isMovie ? media.title : media.name}
-                            alt="image-icon ionicons ionicons-icon"
-                            height="216"
                             width="384"
-                            priority
+                            height="216"
+                            alt="image-icon ionicons ionicons-icon"
+                            title={isMovie ? media.title : media.name}
                             className={styles.fallBackMediaImage}
                           />
                         </Box>

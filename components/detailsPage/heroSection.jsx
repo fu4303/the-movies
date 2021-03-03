@@ -31,12 +31,12 @@ export const MediaHeroSection = (props) => {
             >
               <NextImage
                 src={`${IMAGE_BASE_URL}${POSTER_SIZE}${poster}`}
-                alt={title}
-                title={title}
                 width="342"
                 height="513"
-                priority
                 layout="fixed"
+                alt={title}
+                title={title}
+                priority
                 className={styles.mediaImage}
               />
             </Box>
@@ -48,12 +48,11 @@ export const MediaHeroSection = (props) => {
             >
               <NextImage
                 src="/image.svg"
-                title={title}
-                alt="image-icon ionicons ionicons-icon"
                 width="342"
                 height="513"
-                priority
                 layout="fixed"
+                title={title}
+                alt="image-icon ionicons ionicons-icon"
                 className={styles.fallBackMediaImage}
               />
             </Box>
@@ -86,12 +85,12 @@ export const PersonHeroSection = (props) => {
             >
               <NextImage
                 src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${profile}`}
-                alt={name}
-                title={name}
                 width="300"
                 height="450"
-                priority
                 layout="fixed"
+                alt={name}
+                title={name}
+                priority
                 className={styles.mediaImage}
               />
             </Box>
@@ -104,12 +103,11 @@ export const PersonHeroSection = (props) => {
             >
               <NextImage
                 src="/person-sharp.svg"
-                title={name}
-                alt="person-sharp-icon ionicons ionicons-icon"
                 width="300"
                 height="450"
-                priority
                 layout="fixed"
+                alt="person-sharp-icon ionicons ionicons-icon"
+                title={name}
                 className={styles.fallBackMediaImage}
               />
             </Box>
