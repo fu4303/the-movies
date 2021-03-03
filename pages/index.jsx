@@ -1,8 +1,10 @@
-import config, { API_KEY, API_URL, fetcher } from "../config";
-import SEO from "../components/shared/seo";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
+
+import config, { API_KEY, API_URL, fetcher } from "../config";
 import { pageTitle } from "../components/helpers/pageTitle";
+import { getMovies } from "../lib/movies";
+import SEO from "../components/shared/seo";
 
 const MovieCard = dynamic(() =>
   import("../components/mediaComponents/mediaCards").then(
@@ -39,12 +41,8 @@ const Home = ({ movies }) => {
 };
 
 export const getStaticProps = async () => {
-  const movies = await fetcher(
-    `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-  );
-
   return {
-    props: { movies },
+    props: { movies: await getMovies("popular", 1) },
     revalidate: 1,
   };
 };
