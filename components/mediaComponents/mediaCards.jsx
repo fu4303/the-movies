@@ -6,7 +6,7 @@ import { IMAGE_BASE_URL, POSTER_SIZE, PROFILE_SIZE } from "../../config";
 import { MediaCardsInfo, PeopleCardsInfo } from "./mediaCardsInfo";
 import CircularProgressbar from "../shared/circularProgressbar";
 
-const CardContainer = ({ key, children }) => (
+const CardContainer = ({ children }) => (
   <>
     <Box
       bgColor="white"
@@ -18,7 +18,6 @@ const CardContainer = ({ key, children }) => (
       maxW={{ base: "20rem", sm: "21rem", md: "none" }}
       mx="auto"
       _hover={{ boxShadow: "xl" }}
-      key={key}
     >
       {children}
     </Box>
@@ -36,14 +35,14 @@ export const MediaCards = (props) => {
         return (
           <CardContainer key={media.id}>
             <NextLink href={mediaUrl}>
-              <a>
+              <a aria-label={`${isMovie ? media.title : media.name} Poster`}>
                 {media.poster_path ? (
                   <NextImage
                     src={`${IMAGE_BASE_URL}${POSTER_SIZE}${media.poster_path}`}
                     height="513"
                     width="342"
-                    alt={media.name}
-                    title={media.name}
+                    alt={isMovie ? media.title : media.name}
+                    title={isMovie ? media.title : media.name}
                     className="mediaImage"
                   />
                 ) : (
@@ -53,7 +52,7 @@ export const MediaCards = (props) => {
                       height="513"
                       width="342"
                       alt="image-icon ionicons ionicons-icon"
-                      title={media.title}
+                      title={isMovie ? media.title : media.name}
                       className="fallBackMediaImage"
                     />
                   </Box>
@@ -91,7 +90,7 @@ export const PeopleCards = (props) => {
         return (
           <CardContainer key={person.id}>
             <NextLink href={personURL}>
-              <a>
+              <a aria-label={`${person.name} Profile image`}>
                 {person.profile_path ? (
                   <NextImage
                     src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${person.profile_path}`}
