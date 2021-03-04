@@ -1,0 +1,13 @@
+.infoCardContainer {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+}
+
+@supports not (backdrop-filter: none) {
+  .infoCardContainer {
+    backdrop-filter: none;
+    background: rgba(255, 255, 255, 1); /* Opacity 100% */
+  }
+}

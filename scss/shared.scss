@@ -1,0 +1,22 @@
+.mediaImage {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.heroSectionPoster {
+  border-radius: 1rem;
+}
+
+.heroSectionContainer {
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.2);
+}
+
+.mediaImageFullRounded {
+  border-radius: 0.5rem;
+}
+
+.fallBackMediaImage {
+  opacity: 50%;
+}
