@@ -5,7 +5,7 @@ const getPathColor = (value) => {
     // Red
     return "#ef233c";
   } else if (value > 3.3 && value < 66.66) {
-    // Light Orange
+    // Yellow
     return "#ffd000";
   } else if (value > 66.66) {
     // Green
@@ -13,32 +13,37 @@ const getPathColor = (value) => {
   }
 };
 
-const circularProgressbar = (props) => (
-  <>
-    <Box {...props}>
-      <CircularProgress
-        size={props.size}
-        max="10"
-        bgColor="#27272A"
-        rounded="full"
-        boxShadow="lg"
-        value={props.value}
-        thickness="8px"
-        trackColor="#4e4e69"
-        color={getPathColor(Math.round((props.value * 100) / 10))}
-      >
-        <CircularProgressLabel
-          color="white"
-          fontSize={props.fontSize}
-          fontWeight="600"
+const circularProgressbar = (props) => {
+  const { value, size, fontSize } = props;
+
+  const result = Math.round((value * 100) / 10);
+
+  return (
+    <>
+      <Box {...props}>
+        <CircularProgress
+          aria-label={`vote average: ${result}%`}
+          size={size}
+          max="10"
+          bgColor="#27272A"
+          rounded="full"
+          boxShadow="lg"
+          value={value}
+          thickness="8px"
+          trackColor="#4e4e69"
+          color={getPathColor(result)}
         >
-          {props.value !== 0
-            ? `${Math.round((props.value * 100) / 10)}%`
-            : "NR"}
-        </CircularProgressLabel>
-      </CircularProgress>
-    </Box>
-  </>
-);
+          <CircularProgressLabel
+            color="white"
+            fontSize={fontSize}
+            fontWeight="600"
+          >
+            {value !== 0 ? `${result}%` : "NR"}
+          </CircularProgressLabel>
+        </CircularProgress>
+      </Box>
+    </>
+  );
+};
 
 export default circularProgressbar;
