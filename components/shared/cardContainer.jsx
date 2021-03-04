@@ -3,8 +3,6 @@ import { Box } from "@chakra-ui/react";
 import { MAX_WIDTH } from "../../config";
 import { SectionTitle } from "../helpers/sectionTitle";
 
-import styles from "./styles/cardContainer.module.css";
-
 const Container = ({ title, children }) => (
   <>
     <Box
@@ -18,7 +16,7 @@ const Container = ({ title, children }) => (
         {title}
       </SectionTitle>
 
-      <Box className={styles.container}>{children}</Box>
+      <Box className="cardsContainer">{children}</Box>
     </Box>
   </>
 );

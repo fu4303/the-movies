@@ -6,8 +6,6 @@ import { IMAGE_BASE_URL, PROFILE_SIZE, MAX_WIDTH } from "../../config";
 import { useCredits } from "../hooks/swr";
 import { SectionTitle } from "../helpers/sectionTitle";
 
-import styles from "./styles/actorsCard.module.css";
-
 const ActorsCards = (props) => {
   const { mediaId, mediaType, title, pId } = props;
 
@@ -44,7 +42,7 @@ const ActorsCards = (props) => {
             </chakra.a>
           </NextLink>
 
-          <Box className={styles.container}>
+          <Box className="mediaContainer">
             {data.cast.slice(0, 6).map((person) => {
               return (
                 <Box
@@ -64,7 +62,7 @@ const ActorsCards = (props) => {
                             height="450"
                             alt={person.name}
                             title={person.name}
-                            className={styles.mediaImage}
+                            className="mediaImageFullRounded"
                           />
                         </Box>
                       ) : (
@@ -79,7 +77,7 @@ const ActorsCards = (props) => {
                             height="450"
                             alt="person-sharp-icon ionicons ionicons-icon"
                             title={person.name}
-                            className={styles.fallBackMediaImage}
+                            className="fallBackMediaImage"
                           />
                         </Box>
                       )}

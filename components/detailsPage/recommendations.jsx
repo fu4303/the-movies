@@ -13,8 +13,6 @@ import {
 } from "../../config";
 import { SectionTitle } from "../helpers/sectionTitle";
 
-import styles from "./styles/recommendations.module.css";
-
 const Recommendations = (props) => {
   const { mediaType, mediaId, pId, isMovie } = props;
 
@@ -45,7 +43,7 @@ const Recommendations = (props) => {
             Recommendations
           </SectionTitle>
 
-          <Box className={styles.container}>
+          <Box className="recommendationsContainer">
             {data.results.slice(0, 4).map((media) => {
               return (
                 <Box
@@ -65,14 +63,14 @@ const Recommendations = (props) => {
                             width="384"
                             alt={isMovie ? media.title : media.name}
                             title={isMovie ? media.title : media.name}
-                            className={styles.mediaImage}
+                            className="mediaImageFullRounded"
                           />
                         </Box>
                       ) : (
                         <Box
                           display="flex"
                           bgColor="tailwindGray.400"
-                          className={styles.mediaImage}
+                          className="mediaImageFullRounded"
                         >
                           <NextImage
                             src="/image.svg"
@@ -80,7 +78,7 @@ const Recommendations = (props) => {
                             height="216"
                             alt="image-icon ionicons ionicons-icon"
                             title={isMovie ? media.title : media.name}
-                            className={styles.fallBackMediaImage}
+                            className="fallBackMediaImage"
                           />
                         </Box>
                       )}

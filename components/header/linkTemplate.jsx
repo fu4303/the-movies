@@ -1,40 +1,62 @@
 import { useState } from "react";
-import { chakra, List, ListItem } from "@chakra-ui/react";
+import { chakra, List, ListItem, useBreakpointValue } from "@chakra-ui/react";
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 
 const LinkTemplate = ({ title, data, closeNav }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
+  const btnBgColor = useBreakpointValue({
+    base: "tailwindCyan.800",
+    md: "transparent",
+  });
 
   return (
     <>
-      <ListItem w="0" whiteSpace="nowrap" onClick={handleClick}>
+      <ListItem
+        w={{ base: "0", lg: "auto" }}
+        whiteSpace="nowrap"
+        onClick={() => setIsOpen(!isOpen)}
+        // onMouseEnter={() => setIsOpen(true)}
+        // onMouseLeave={() => setIsOpen(false)}
+      >
         <chakra.button
+          display="flex"
+          flexDir={{ lg: "row-reverse" }}
+          alignItems="center"
           fontSize="lg"
           fontWeight="500"
-          bgColor={isOpen && "tailwindCyan.800"}
+          bgColor={{ base: isOpen && "tailwindCyan.800", lg: "transparent" }}
           rounded="lg"
           transitionDuration="250ms"
-          my="1"
-          py="1"
-          px="2"
-          _hover={{ background: "tailwindCyan.800" }}
+          my={{ base: "1", lg: "0" }}
+          py={{ base: "1", lg: "3" }}
+          px={{ base: "2", lg: "0" }}
+          _hover={{ background: btnBgColor }}
           _focus={{ outline: "none" }}
         >
           {isOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}
           {title}
         </chakra.button>
 
-        <List display={isOpen ? "block" : "none"} rounded="lg">
+        <List
+          color={{ lg: "black" }}
+          display={isOpen ? "block" : "none"}
+          rounded="lg"
+          pos={{ lg: "absolute" }}
+          top="50px"
+          bg={{ lg: "gray.50" }}
+          py={{ lg: "2" }}
+          minW={{ lg: "12rem" }}
+          zIndex={{ lg: "2" }}
+        >
           {data.map((item, index) => (
             <ListItem
               py="1"
-              ml="5"
-              title={`${item.title} ${title}`}
+              ml={{ base: "5", lg: "0" }}
+              pl={{ lg: "5" }}
+              aria-label={`${item.title} ${title}`}
+              _hover={{ bgColor: "gray.200" }}
               key={index}
             >
               <NextLink href={item.href}>
