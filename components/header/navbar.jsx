@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <>
-      {/* <Box
+      <Box
         as="nav"
         display={{ base: "none", lg: "flex" }}
         justifyContent="space-between"
@@ -26,24 +26,22 @@ const Navbar = () => {
         <LinksMenuTemplate title="Tv Shows" data={tv} />
         <LinksMenuTemplate title="People" data={people} />
         <SearchBar />
-      </Box> */}
+      </Box>
 
-      <Box as="nav" w={{ lg: "75%" }}>
+      <Box as="nav" display={{ lg: "none" }}>
         <List
-          bg={{ base: "tailwindCyan.900", lg: "transparent" }}
-          boxShadow={{ base: "2xl", lg: "none" }}
-          display={{ base: isOpen ? "flex" : "none", lg: "flex" }}
-          flexDir={{ base: "column", lg: "row" }}
-          justifyContent={{ lg: "space-between" }}
-          alignItems={{ lg: "center" }}
-          rounded={{ base: "lg", lg: "none" }}
-          pos={{ base: "absolute", lg: "static" }}
+          bg="tailwindCyan.900"
+          boxShadow="2xl"
+          display={isOpen ? "flex" : "none"}
+          flexDir="column"
+          rounded="lg"
+          pos="absolute"
           top="60px"
           left="5%"
           right="5%"
-          px={{ base: "4", lg: "0" }}
-          py={{ base: "2", lg: "0" }}
-          zIndex={{ base: "2", lg: "0" }}
+          px="4"
+          py="2"
+          zIndex="2"
         >
           <LinkTemplate title="Movies" data={movie} closeNav={handleCloseNav} />
           <LinkTemplate title="Tv Shows" data={tv} closeNav={handleCloseNav} />
@@ -52,7 +50,7 @@ const Navbar = () => {
             data={people}
             closeNav={handleCloseNav}
           />
-          <SearchBar />
+          <SearchBar isWidthFull />
         </List>
       </Box>
       <HamburgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
