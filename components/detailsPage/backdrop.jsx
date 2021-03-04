@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { IMAGE_BASE_URL, BACKDROP_SIZE, MAX_WIDTH } from "../../config";
 
-const Backdrop = ({ children, backdropPath, isMinHeightScreenFull }) => (
+const Backdrop = ({ children, backdropPath }) => (
   <>
     <Box
       as="section"
@@ -9,7 +9,6 @@ const Backdrop = ({ children, backdropPath, isMinHeightScreenFull }) => (
       bgPosition="center"
       bgRepeat="no-repeat"
       bgSize="cover"
-      minH={isMinHeightScreenFull ? "100vh" : "50vh"}
       maxW={MAX_WIDTH}
       mx="auto"
       px={[4, 8, 12, 16]}
