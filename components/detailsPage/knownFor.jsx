@@ -5,8 +5,6 @@ import NextImage from "next/image";
 import { IMAGE_BASE_URL, MAX_WIDTH, POSTER_SIZE } from "../../config";
 import { SectionTitle } from "../helpers/sectionTitle";
 
-import styles from "./styles/knownFor.module.css";
-
 const KnownFor = (props) => {
   const { cast } = props.data;
 
@@ -29,7 +27,7 @@ const KnownFor = (props) => {
             Known For
           </SectionTitle>
 
-          <Box className={styles.container}>
+          <Box className="mediaContainer">
             {cast
               .sort((a, b) => b.popularity - a.popularity)
               .slice(0, 6)
@@ -52,7 +50,7 @@ const KnownFor = (props) => {
                               height="513"
                               alt={media.title || media.name}
                               title={media.title || media.name}
-                              className={styles.mediaImage}
+                              className="mediaImageFullRounded"
                             />
                           </Box>
                         ) : (
@@ -67,7 +65,7 @@ const KnownFor = (props) => {
                               height="513"
                               alt="image-icon ionicons ionicons-icon"
                               title={media.title || media.name}
-                              className={styles.fallBackMediaImage}
+                              className="fallBackMediaImage"
                             />
                           </Box>
                         )}

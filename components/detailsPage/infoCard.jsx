@@ -7,8 +7,6 @@ import Date from "../shared/date";
 import CircularProgressbar from "../shared/circularProgressbar";
 import MediaDesc from "./mediaDesc";
 
-import styles from "./styles/infoCard.module.css";
-
 const InfoCardContainer = ({ children }) => (
   <>
     <Box
@@ -19,7 +17,7 @@ const InfoCardContainer = ({ children }) => (
       px="1rem"
       mt={{ base: "1rem", lg: "0" }}
       ml={{ lg: "1.25rem" }}
-      className={styles.container}
+      className="infoCardContainer"
     >
       {children}
     </Box>

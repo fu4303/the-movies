@@ -1,12 +1,10 @@
+import { Box } from "@chakra-ui/react";
 import NextImage from "next/image";
 
 import { IMAGE_BASE_URL, POSTER_SIZE, PROFILE_SIZE } from "../../config";
 import { MediaInfoCard, PersonInfoCard } from "./infoCard";
-import { Box } from "@chakra-ui/react";
 import Container from "./container";
 import Backdrop from "./backdrop";
-
-import styles from "./styles/heroSection.module.css";
 
 export const MediaHeroSection = (props) => {
   const {
@@ -21,11 +19,11 @@ export const MediaHeroSection = (props) => {
 
   return (
     <>
-      <Backdrop backdropPath={backdrop} isMinHeightScreenFull>
+      <Backdrop backdropPath={backdrop}>
         <Container backBtnHref={backBtnHref}>
           {poster ? (
             <Box
-              className={styles.mediaImageContainer}
+              className="heroSectionContainer"
               alignSelf="center"
               display="flex"
             >
@@ -37,12 +35,12 @@ export const MediaHeroSection = (props) => {
                 alt={title}
                 title={title}
                 priority
-                className={styles.mediaImage}
+                className="heroSectionPoster"
               />
             </Box>
           ) : (
             <Box
-              className={styles.mediaImageContainer}
+              className="heroSectionContainer"
               alignSelf="center"
               bgColor="tailwindGray.400"
             >
@@ -53,7 +51,7 @@ export const MediaHeroSection = (props) => {
                 layout="fixed"
                 title={title}
                 alt="image-icon ionicons ionicons-icon"
-                className={styles.fallBackMediaImage}
+                className="fallBackMediaImage"
               />
             </Box>
           )}
@@ -74,12 +72,11 @@ export const PersonHeroSection = (props) => {
         backdropPath={
           data.cast.sort((a, b) => b.popularity - a.popularity)[0].backdrop_path
         }
-        isMinHeightScreenFull
       >
         <Container backBtnHref={backBtnHref}>
           {profile ? (
             <Box
-              className={styles.mediaImageContainer}
+              className="heroSectionContainer"
               alignSelf="center"
               display="flex"
             >
@@ -91,12 +88,12 @@ export const PersonHeroSection = (props) => {
                 alt={name}
                 title={name}
                 priority
-                className={styles.mediaImage}
+                className="heroSectionPoster"
               />
             </Box>
           ) : (
             <Box
-              className={styles.mediaImageContainer}
+              className="heroSectionContainer"
               alignSelf="center"
               display="flex"
               bgColor="tailwindGray.400"
@@ -108,7 +105,7 @@ export const PersonHeroSection = (props) => {
                 layout="fixed"
                 alt="person-sharp-icon ionicons ionicons-icon"
                 title={name}
-                className={styles.fallBackMediaImage}
+                className="fallBackMediaImage"
               />
             </Box>
           )}
