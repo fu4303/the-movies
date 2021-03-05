@@ -43,7 +43,7 @@ export const MediaHeroSection = (props) => {
           <Box
             className="heroSectionContainer"
             alignSelf="center"
-            display={!poster && "flex"}
+            display={poster && "flex"}
             bgColor={!poster && "tailwindGray.400"}
             aria-label={`${title} Poster`}
           >
@@ -92,7 +92,7 @@ export const PersonHeroSection = (props) => {
           <Box
             className="heroSectionContainer"
             alignSelf="center"
-            display={!profile && "flex"}
+            display={profile && "flex"}
             bgColor={!profile && "tailwindGray.400"}
             aria-label={`${name} Profile image`}
           >
