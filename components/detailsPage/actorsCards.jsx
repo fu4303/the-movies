@@ -58,8 +58,8 @@ const ActorsCards = (props) => {
                         <Box display="flex">
                           <NextImage
                             src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${person.profile_path}`}
-                            width="300"
-                            height="450"
+                            width={300}
+                            height={450}
                             alt={person.name}
                             title={person.name}
                             className="mediaImageFullRounded"
@@ -73,8 +73,8 @@ const ActorsCards = (props) => {
                         >
                           <NextImage
                             src="/person-sharp.svg"
-                            width="300"
-                            height="450"
+                            width={300}
+                            height={450}
                             alt="person-sharp-icon ionicons ionicons-icon"
                             title={person.name}
                             className="fallBackMediaImage"

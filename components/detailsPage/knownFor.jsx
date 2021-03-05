@@ -46,8 +46,8 @@ const KnownFor = (props) => {
                           <Box display="flex">
                             <NextImage
                               src={`${IMAGE_BASE_URL}${POSTER_SIZE}${media.poster_path}`}
-                              width="342"
-                              height="513"
+                              width={342}
+                              height={513}
                               alt={media.title || media.name}
                               title={media.title || media.name}
                               className="mediaImageFullRounded"
@@ -61,8 +61,8 @@ const KnownFor = (props) => {
                           >
                             <NextImage
                               src="/image.svg"
-                              width="342"
-                              height="513"
+                              width={342}
+                              height={513}
                               alt="image-icon ionicons ionicons-icon"
                               title={media.title || media.name}
                               className="fallBackMediaImage"

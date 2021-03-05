@@ -39,8 +39,8 @@ export const MediaCards = (props) => {
                 {media.poster_path ? (
                   <NextImage
                     src={`${IMAGE_BASE_URL}${POSTER_SIZE}${media.poster_path}`}
-                    height="513"
-                    width="342"
+                    height={513}
+                    width={342}
                     alt={isMovie ? media.title : media.name}
                     title={isMovie ? media.title : media.name}
                     className="mediaImage"
@@ -49,8 +49,8 @@ export const MediaCards = (props) => {
                   <Box roundedTop="lg" bg="tailwindGray.400">
                     <NextImage
                       src="/image.svg"
-                      height="513"
-                      width="342"
+                      height={513}
+                      width={342}
                       alt="image-icon ionicons ionicons-icon"
                       title={isMovie ? media.title : media.name}
                       className="fallBackMediaImage"
@@ -94,8 +94,8 @@ export const PeopleCards = (props) => {
                 {person.profile_path ? (
                   <NextImage
                     src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${person.profile_path}`}
-                    width="300"
-                    height="449"
+                    width={300}
+                    height={449}
                     alt={person.name}
                     title={person.name}
                     className="mediaImage"
@@ -104,8 +104,8 @@ export const PeopleCards = (props) => {
                   <Box roundedTop="lg" bgColor="tailwindGray.400">
                     <NextImage
                       src="/person-sharp.svg"
-                      width="300"
-                      height="449"
+                      width={300}
+                      height={449}
                       alt="person-sharp-icon ionicons ionicons-icon"
                       title={person.name}
                       className="fallBackMediaImage"

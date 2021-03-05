@@ -29,8 +29,8 @@ export const MediaHeroSection = (props) => {
             >
               <NextImage
                 src={`${IMAGE_BASE_URL}${POSTER_SIZE}${poster}`}
-                width="342"
-                height="513"
+                width={342}
+                height={513}
                 layout="fixed"
                 alt={title}
                 title={title}
@@ -46,8 +46,8 @@ export const MediaHeroSection = (props) => {
             >
               <NextImage
                 src="/image.svg"
-                width="342"
-                height="513"
+                width={342}
+                height={513}
                 layout="fixed"
                 title={title}
                 alt="image-icon ionicons ionicons-icon"
@@ -82,8 +82,8 @@ export const PersonHeroSection = (props) => {
             >
               <NextImage
                 src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${profile}`}
-                width="300"
-                height="450"
+                width={300}
+                height={450}
                 layout="fixed"
                 alt={name}
                 title={name}
@@ -100,8 +100,8 @@ export const PersonHeroSection = (props) => {
             >
               <NextImage
                 src="/person-sharp.svg"
-                width="300"
-                height="450"
+                width={300}
+                height={450}
                 layout="fixed"
                 alt="person-sharp-icon ionicons ionicons-icon"
                 title={name}

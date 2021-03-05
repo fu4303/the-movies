@@ -59,8 +59,8 @@ const Recommendations = (props) => {
                         <Box display="flex">
                           <NextImage
                             src={`${IMAGE_BASE_URL}${MEDIUM_BACKDROP_SIZE}${media.backdrop_path}`}
-                            height="216"
-                            width="384"
+                            width={384}
+                            height={216}
                             alt={isMovie ? media.title : media.name}
                             title={isMovie ? media.title : media.name}
                             className="mediaImageFullRounded"
@@ -74,8 +74,8 @@ const Recommendations = (props) => {
                         >
                           <NextImage
                             src="/image.svg"
-                            width="384"
-                            height="216"
+                            width={384}
+                            height={216}
                             alt="image-icon ionicons ionicons-icon"
                             title={isMovie ? media.title : media.name}
                             className="fallBackMediaImage"
