@@ -53,7 +53,7 @@ const ActorsCards = (props) => {
                   key={person.id}
                 >
                   <NextLink href={`/person/popular/${person.id}`}>
-                    <a>
+                    <a aria-label={person.name}>
                       {person.profile_path ? (
                         <Box display="flex">
                           <NextImage

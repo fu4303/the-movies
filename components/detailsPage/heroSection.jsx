@@ -3,8 +3,27 @@ import NextImage from "next/image";
 
 import { IMAGE_BASE_URL, POSTER_SIZE, PROFILE_SIZE } from "../../config";
 import { MediaInfoCard, PersonInfoCard } from "./infoCard";
-import Container from "./container";
+import BackBtn from "./backBtn";
 import Backdrop from "./backdrop";
+
+const Container = ({ backBtnHref, children }) => (
+  <>
+    <Box>
+      <Box pt="1.5rem">
+        <BackBtn href={backBtnHref} />
+      </Box>
+
+      <Box
+        display="flex"
+        flexDir={{ base: "column", lg: "row" }}
+        justifyContent={{ base: "center", lg: "flex-start" }}
+        py={{ base: "3rem", lg: "2rem" }}
+      >
+        {children}
+      </Box>
+    </Box>
+  </>
+);
 
 export const MediaHeroSection = (props) => {
   const {
@@ -21,12 +40,14 @@ export const MediaHeroSection = (props) => {
     <>
       <Backdrop backdropPath={backdrop}>
         <Container backBtnHref={backBtnHref}>
-          {poster ? (
-            <Box
-              className="heroSectionContainer"
-              alignSelf="center"
-              display="flex"
-            >
+          <Box
+            className="heroSectionContainer"
+            alignSelf="center"
+            display={!poster && "flex"}
+            bgColor={!poster && "tailwindGray.400"}
+            aria-label={`${title} Poster`}
+          >
+            {poster ? (
               <NextImage
                 src={`${IMAGE_BASE_URL}${POSTER_SIZE}${poster}`}
                 width={342}
@@ -37,13 +58,7 @@ export const MediaHeroSection = (props) => {
                 priority
                 className="heroSectionPoster"
               />
-            </Box>
-          ) : (
-            <Box
-              className="heroSectionContainer"
-              alignSelf="center"
-              bgColor="tailwindGray.400"
-            >
+            ) : (
               <NextImage
                 src="/image.svg"
                 width={342}
@@ -53,8 +68,8 @@ export const MediaHeroSection = (props) => {
                 alt="image-icon ionicons ionicons-icon"
                 className="fallBackMediaImage"
               />
-            </Box>
-          )}
+            )}
+          </Box>
 
           <MediaInfoCard href={`/${mediaType}/${pId}/${mediaId}`} {...props} />
         </Container>
@@ -74,12 +89,14 @@ export const PersonHeroSection = (props) => {
         }
       >
         <Container backBtnHref={backBtnHref}>
-          {profile ? (
-            <Box
-              className="heroSectionContainer"
-              alignSelf="center"
-              display="flex"
-            >
+          <Box
+            className="heroSectionContainer"
+            alignSelf="center"
+            display={!profile && "flex"}
+            bgColor={!profile && "tailwindGray.400"}
+            aria-label={`${name} Profile image`}
+          >
+            {profile ? (
               <NextImage
                 src={`${IMAGE_BASE_URL}${PROFILE_SIZE}${profile}`}
                 width={300}
@@ -90,14 +107,7 @@ export const PersonHeroSection = (props) => {
                 priority
                 className="heroSectionPoster"
               />
-            </Box>
-          ) : (
-            <Box
-              className="heroSectionContainer"
-              alignSelf="center"
-              display="flex"
-              bgColor="tailwindGray.400"
-            >
+            ) : (
               <NextImage
                 src="/person-sharp.svg"
                 width={300}
@@ -107,8 +117,8 @@ export const PersonHeroSection = (props) => {
                 title={name}
                 className="fallBackMediaImage"
               />
-            </Box>
-          )}
+            )}
+          </Box>
 
           <PersonInfoCard href={`/person/popular/${personId}`} {...props} />
         </Container>

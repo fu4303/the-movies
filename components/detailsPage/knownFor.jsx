@@ -41,7 +41,7 @@ const KnownFor = (props) => {
                     key={media.id}
                   >
                     <NextLink href={`/${media.media_type}/popular/${media.id}`}>
-                      <a>
+                      <a aria-label={`${media.title || media.name} Poster`}>
                         {media.poster_path ? (
                           <Box display="flex">
                             <NextImage
