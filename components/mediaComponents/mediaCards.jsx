@@ -25,7 +25,7 @@ const CardContainer = ({ children }) => (
 );
 
 export const MediaCards = (props) => {
-  const { data, mediaType, pId, isMovie } = props;
+  const { data, mediaType, pId } = props;
 
   return (
     <>
@@ -35,14 +35,14 @@ export const MediaCards = (props) => {
         return (
           <CardContainer key={media.id}>
             <NextLink href={mediaUrl}>
-              <a aria-label={`${isMovie ? media.title : media.name} Poster`}>
+              <a aria-label={`${media.title || media.name} Poster`}>
                 {media.poster_path ? (
                   <NextImage
                     src={`${IMAGE_BASE_URL}${POSTER_SIZE}${media.poster_path}`}
                     height={513}
                     width={342}
-                    alt={isMovie ? media.title : media.name}
-                    title={isMovie ? media.title : media.name}
+                    alt={media.title || media.name}
+                    title={media.title || media.name}
                     className="mediaImage"
                   />
                 ) : (
@@ -52,7 +52,7 @@ export const MediaCards = (props) => {
                       height={513}
                       width={342}
                       alt="image-icon ionicons ionicons-icon"
-                      title={isMovie ? media.title : media.name}
+                      title={media.title || media.name}
                       className="fallBackMediaImage"
                     />
                   </Box>
@@ -69,8 +69,8 @@ export const MediaCards = (props) => {
             />
             <MediaCardsInfo
               href={mediaUrl}
-              title={isMovie ? media.title : media.name}
-              date={isMovie ? media.release_date : media.first_air_date}
+              title={media.title || media.name}
+              date={media.release_date || media.first_air_date}
             />
           </CardContainer>
         );

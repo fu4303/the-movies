@@ -14,7 +14,7 @@ import {
 import { SectionTitle } from "../helpers/sectionTitle";
 
 const Recommendations = (props) => {
-  const { mediaType, mediaId, pId, isMovie } = props;
+  const { mediaType, mediaId, pId } = props;
 
   const { data, error } = useSWR(
     `${API_URL}${mediaType}/${mediaId}/recommendations?api_key=${API_KEY}&language=en-US`,
@@ -54,15 +54,15 @@ const Recommendations = (props) => {
                   key={media.id}
                 >
                   <NextLink href={`/${mediaType}/popular/${media.id}`}>
-                    <a>
+                    <a aria-label={`${media.title || media.name} Backdrop`}>
                       {media.backdrop_path ? (
                         <Box display="flex">
                           <NextImage
                             src={`${IMAGE_BASE_URL}${MEDIUM_BACKDROP_SIZE}${media.backdrop_path}`}
                             width={384}
                             height={216}
-                            alt={isMovie ? media.title : media.name}
-                            title={isMovie ? media.title : media.name}
+                            alt={media.title || media.name}
+                            title={media.title || media.name}
                             className="mediaImageFullRounded"
                           />
                         </Box>
@@ -77,7 +77,7 @@ const Recommendations = (props) => {
                             width={384}
                             height={216}
                             alt="image-icon ionicons ionicons-icon"
-                            title={isMovie ? media.title : media.name}
+                            title={media.title || media.name}
                             className="fallBackMediaImage"
                           />
                         </Box>

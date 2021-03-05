@@ -15,7 +15,7 @@ const Credits = () => {
 
   return (
     <>
-      <CreditsPage mediaId={movieId} mediaType="movie" isMovie>
+      <CreditsPage mediaId={movieId} mediaType="movie">
         <PeopleCards data={data.cast} pId={movieId} isCreditsPage />
       </CreditsPage>
     </>

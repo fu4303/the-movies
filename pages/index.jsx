@@ -23,12 +23,7 @@ const Home = ({ movies }) => {
         description={config.description}
       />
       <Container title={`${pageTitle("popular")} Movies`}>
-        <MediaCards
-          data={data.results}
-          mediaType="movie"
-          pId="popular"
-          isMovie
-        />
+        <MediaCards data={data.results} mediaType="movie" pId="popular" />
       </Container>
     </>
   );

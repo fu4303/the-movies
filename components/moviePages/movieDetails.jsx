@@ -16,7 +16,7 @@ const MovieDetails = (props) => {
         pId={pId}
       />
       <Trailer mediaType="movie" mediaId={movieId} pId={pId} />
-      <Recommendations mediaType="movie" mediaId={movieId} pId={pId} isMovie />
+      <Recommendations mediaType="movie" mediaId={movieId} pId={pId} />
     </>
   );
 };

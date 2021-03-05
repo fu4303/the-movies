@@ -18,7 +18,7 @@ const Page = ({ pId, index }) => {
   return (
     <>
       {index < data.total_pages && (
-        <MovieCard data={data.results} mediaType="movie" pId={pId} isMovie />
+        <MovieCard data={data.results} mediaType="movie" pId={pId} />
       )}
     </>
   );

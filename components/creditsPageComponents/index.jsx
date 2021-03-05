@@ -4,7 +4,7 @@ import Container from "../shared/cardContainer";
 import SEO from "../shared/seo";
 
 const CreditsPageHeader = (props) => {
-  const { mediaId, mediaType, isMovie, children } = props;
+  const { mediaId, mediaType, children } = props;
 
   const { data, isLoading, isError } = useMediaDetails(mediaId, mediaType);
 
@@ -14,12 +14,10 @@ const CreditsPageHeader = (props) => {
   return (
     <>
       <SEO
-        title={`${isMovie ? data.title : data.name} (Cast & Crew)`}
+        title={`${data.title || data.name} (Cast & Crew)`}
         description={data.overview}
       />
-      <Container
-        title={`${pageTitle(`${isMovie ? data.title : data.name} Cast`)}`}
-      >
+      <Container title={`${pageTitle(`${data.title || data.name} Cast`)}`}>
         {children}
       </Container>
     </>
