@@ -1,7 +1,6 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 
 import { MAX_WIDTH } from "../../config";
-import { SectionTitle } from "../helpers/sectionTitle";
 
 const Container = ({ title, children }) => (
   <>
@@ -12,9 +11,14 @@ const Container = ({ title, children }) => (
       maxW={MAX_WIDTH}
       mx="auto"
     >
-      <SectionTitle color="white" pt="1rem">
+      <Heading
+        as="h1"
+        color="white"
+        pt="1rem"
+        fontSize={{ base: "1.5rem", lg: "1.75rem" }}
+      >
         {title}
-      </SectionTitle>
+      </Heading>
 
       <Box className="cardsContainer">{children}</Box>
     </Box>
