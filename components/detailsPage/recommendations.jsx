@@ -11,7 +11,7 @@ import {
   fetcher,
   MAX_WIDTH,
 } from "../../config";
-import { SectionTitle } from "../helpers/sectionTitle";
+import { SectionTitle } from "../UI/sectionTitle";
 
 const Recommendations = (props) => {
   const { mediaType, mediaId, pId } = props;

@@ -2,7 +2,7 @@ import { AspectRatio, Box } from "@chakra-ui/react";
 import useSWR from "swr";
 
 import { API_URL, API_KEY, fetcher, MAX_WIDTH } from "../../config";
-import { SectionTitle } from "../helpers/sectionTitle";
+import { SectionTitle } from "../UI/sectionTitle";
 
 const Trailer = ({ mediaType, mediaId, pId }) => {
   const { data, error } = useSWR(

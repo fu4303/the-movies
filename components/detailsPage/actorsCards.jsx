@@ -4,7 +4,7 @@ import NextImage from "next/image";
 
 import { IMAGE_BASE_URL, PROFILE_SIZE, MAX_WIDTH } from "../../config";
 import { useCredits } from "../hooks/swr";
-import { SectionTitle } from "../helpers/sectionTitle";
+import { SectionTitle } from "../UI/sectionTitle";
 
 const ActorsCards = (props) => {
   const { mediaId, mediaType, title, pId } = props;

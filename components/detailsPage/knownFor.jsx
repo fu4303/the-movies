@@ -3,7 +3,7 @@ import NextLink from "next/link";
 import NextImage from "next/image";
 
 import { IMAGE_BASE_URL, MAX_WIDTH, POSTER_SIZE } from "../../config";
-import { SectionTitle } from "../helpers/sectionTitle";
+import { SectionTitle } from "../UI/sectionTitle";
 
 const KnownFor = (props) => {
   const { cast } = props.data;
