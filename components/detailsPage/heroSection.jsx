@@ -1,10 +1,31 @@
-import { Box } from "@chakra-ui/react";
+import { Box, chakra } from "@chakra-ui/react";
 import NextImage from "next/image";
+import NextLink from "next/link";
 
 import { IMAGE_BASE_URL, POSTER_SIZE, PROFILE_SIZE } from "../../config";
 import { MediaInfoCard, PersonInfoCard } from "./infoCard";
-import BackBtn from "./backBtn";
 import Backdrop from "./backdrop";
+
+const BackBtn = ({ href }) => (
+  <>
+    <NextLink href={href}>
+      <chakra.a
+        href={href}
+        bgColor="tailwindCyan.700"
+        fontWeight="600"
+        rounded="lg"
+        px="8"
+        py="2"
+        style={{
+          WebkitBoxShadow: "0px 0px 0px 4px rgba(8,145,178,0.5)",
+          boxShadow: "0px 0px 0px 4px rgba(8,145,178,0.5)",
+        }}
+      >
+        Back
+      </chakra.a>
+    </NextLink>
+  </>
+);
 
 const Container = ({ backBtnHref, children }) => (
   <>
