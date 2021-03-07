@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, List } from "@chakra-ui/react";
 
 import { movie, tv, people } from "../../config";
-import HamburgerMenu from "../UI/header/hamburgerMenu";
+import HamburgerMenu from "../UI/hamburgerMenu";
 import SearchBar from "./searchBar";
 import LinksMenuTemplate from "./linksMenuTemplate";
 import LinkTemplate from "./linkTemplate";
@@ -50,7 +50,7 @@ const Navbar = () => {
             data={people}
             closeNav={handleCloseNav}
           />
-          <SearchBar isWidthFull />
+          <SearchBar />
         </List>
       </Box>
       <HamburgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />

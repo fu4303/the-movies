@@ -4,7 +4,7 @@ import NextImage from "next/image";
 
 import { IMAGE_BASE_URL, POSTER_SIZE, PROFILE_SIZE } from "../../config";
 import { MediaCardsInfo, PeopleCardsInfo } from "./mediaCardsInfo";
-import CircularProgressbar from "../shared/circularProgressbar";
+import CircularProgressbar from "../UI/circularProgressbar";
 
 const CardContainer = ({ children }) => (
   <>

@@ -4,7 +4,7 @@ import { calculateAge } from "../helpers/calculateAge";
 import { convertMinutesToHours } from "../helpers/convertMinutesToHours";
 import { Box, List, ListItem, Text } from "@chakra-ui/react";
 import Date from "../shared/date";
-import CircularProgressbar from "../shared/circularProgressbar";
+import CircularProgressbar from "../UI/circularProgressbar";
 import MediaDesc from "./mediaDesc";
 
 const InfoCardContainer = ({ children }) => (

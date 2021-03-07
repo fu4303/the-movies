@@ -13,7 +13,7 @@ const getPathColor = (value) => {
   }
 };
 
-const circularProgressbar = (props) => {
+const CircularProgressbar = (props) => {
   const { value, size, fontSize } = props;
 
   const result = Math.round((value * 100) / 10);
@@ -46,4 +46,4 @@ const circularProgressbar = (props) => {
   );
 };
 
-export default circularProgressbar;
+export default CircularProgressbar;
