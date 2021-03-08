@@ -29,19 +29,17 @@ const Home = ({ data }) => {
     <>
       <SEO title={getTitle(query.type)} description={config.description} />
 
-      {query.type === "person" ? (
-        <Container title={`Trending People`}>
+      <Container title={getTitle(query.type)}>
+        {query.type === "person" ? (
           <PersonCard data={data.results} pId="popular" />
-        </Container>
-      ) : (
-        <Container title={getTitle(query.type)}>
+        ) : (
           <MediaCards
             data={data.results}
             mediaType={query.type !== "all" && query.type}
             pId="popular"
           />
-        </Container>
-      )}
+        )}
+      </Container>
     </>
   );
 };
