@@ -30,7 +30,7 @@ export const MediaCards = (props) => {
   return (
     <>
       {data.map((media) => {
-        const mediaUrl = `/${mediaType}/${pId}/${media.id}`;
+        const mediaUrl = `/${mediaType || media.media_type}/${pId}/${media.id}`;
 
         return (
           <CardContainer key={media.id}>
