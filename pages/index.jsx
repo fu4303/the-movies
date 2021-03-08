@@ -1,38 +1,56 @@
-import useSWR from "swr";
+import { useRouter } from "next/router";
 
-import config, { API_KEY, API_URL, fetcher } from "../config";
-import { pageTitle } from "../components/helpers/pageTitle";
-import { getMovies } from "../lib/movies";
-import { MediaCards } from "../components/mediaComponents/mediaCards";
+import config from "../config";
+import { getTrending } from "../lib/trending";
+import {
+  MediaCards,
+  PeopleCards as PersonCard,
+} from "../components/mediaComponents/mediaCards";
 import SEO from "../components/shared/seo";
 import Container from "../components/shared/cardContainer";
 
-const Home = ({ movies }) => {
-  const {
-    data,
-  } = useSWR(
-    `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`,
-    fetcher,
-    { initialData: movies }
-  );
+const getTitle = (query) => {
+  if (query === "movie") {
+    return "Trending Movies";
+  } else if (query === "tv") {
+    return "Trending Tv Shows";
+  } else if (query === "person") {
+    return "Trending People";
+  } else {
+    return "Trending";
+  }
+};
+
+const Home = ({ data }) => {
+  const router = useRouter();
+  const { query } = router;
 
   return (
     <>
-      <SEO
-        title={`${pageTitle("popular")} Movies`}
-        description={config.description}
-      />
-      <Container title={`${pageTitle("popular")} Movies`}>
-        <MediaCards data={data.results} mediaType="movie" pId="popular" />
-      </Container>
+      <SEO title={getTitle(query.type)} description={config.description} />
+
+      {query.type === "person" ? (
+        <Container title={`Trending People`}>
+          <PersonCard data={data.results} pId="popular" />
+        </Container>
+      ) : (
+        <Container title={getTitle(query.type)}>
+          <MediaCards
+            data={data.results}
+            mediaType={query.type !== "all" && query.type}
+            pId="popular"
+          />
+        </Container>
+      )}
     </>
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async ({ query }) => {
   return {
-    props: { movies: await getMovies("popular", 1) },
-    revalidate: 1,
+    props: {
+      data: await getTrending(query.type, "day"),
+    },
   };
 };
 
