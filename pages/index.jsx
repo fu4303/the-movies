@@ -29,7 +29,7 @@ const Home = ({ data }) => {
     <>
       <SEO title={getTitle(query.type)} description={config.description} />
 
-      <Container title={getTitle(query.type)}>
+      <Container title={getTitle(query.type)} isTrending>
         {query.type === "person" ? (
           <PersonCard data={data.results} pId="popular" />
         ) : (
