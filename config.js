@@ -2,9 +2,7 @@
 export default {
   title: "The Movies",
   description: "My awesome description!",
-  social: {
-    twitter: "who",
-  },
+  canonical: "https://the-movies.vercel.app/",
 };
 
 export const MAX_WIDTH = "1440px";
