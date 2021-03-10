@@ -58,16 +58,16 @@ const Container = ({ title, isTrending, children }) => {
 
                   <MenuList>
                     <MenuItem onClick={() => router.push("?type=movie")}>
-                      movie
+                      Movies
                     </MenuItem>
                     <MenuItem onClick={() => router.push("?type=tv")}>
-                      tv
+                      Tv shows
                     </MenuItem>
                     <MenuItem onClick={() => router.push("?type=person")}>
-                      person
+                      People
                     </MenuItem>
                     <MenuItem onClick={() => router.push("?type=all")}>
-                      all
+                      All
                     </MenuItem>
                   </MenuList>
                 </>
