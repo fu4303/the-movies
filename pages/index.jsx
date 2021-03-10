@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 
-import config from "../config";
 import { getTrending } from "../lib/trending";
 import {
   MediaCards,
   PeopleCards as PersonCard,
 } from "../components/mediaComponents/mediaCards";
-import SEO from "../components/shared/seo";
+import config from "../config";
 import Container from "../components/shared/cardContainer";
+import { NextSeo } from "next-seo";
 
 const getTitle = (query) => {
   if (query === "movie") {
@@ -25,9 +25,20 @@ const Home = ({ data }) => {
   const router = useRouter();
   const { query } = router;
 
+  const title = `${getTitle(query.type)} - ${config.title}`;
+  const description = "Get the latest Movies, Tv shows, and People.";
+
   return (
     <>
-      <SEO title={getTitle(query.type)} description={config.description} />
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={config.canonical}
+        openGraph={{
+          title,
+          description,
+        }}
+      />
 
       <Container title={getTitle(query.type)} isTrending>
         {query.type === "person" ? (
